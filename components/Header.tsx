@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className="p-7 mx-auto bg-sage-900 text-white">
       <div className="flex justify-between items-center">
-        <div className="font-bold">
+        <div className="font-bold border  border-solid px-1 rounded-sm">
           <Link href="/">logo</Link>
         </div>
         <ul className="flex gap-2 font-bold">

@@ -1,22 +1,16 @@
 import Link from "next/link";
 import React from "react";
 
-type postData = {
-  userId: number;
-  id: 1;
-  title: string;
-  body: string;
-};
 const fetchPost = async () => {
   const posts = await fetch("https://jsonplaceholder.typicode.com/posts");
   return posts.json();
 };
 const posts = async () => {
-  const posts: [postData] = await fetchPost();
+  const posts: [PostType] = await fetchPost();
   return (
     <div className="w-full ">
-      {posts.map((p: postData) => (
-        <Link key={p.id} href={`/posts/${p.id}`}>
+      {posts.map((p: PostType) => (
+        <Link key={p.id} href={`/posts/${p.id}`} as={`posts/${p.id}`}>
           <div className="w-full max-w-md p-3 hover:bg-sage-700  mt-2 bg-yellow mx-auto">
             <p className="font-bold pb-3">
               <small> post#{p.id}-</small>
@@ -29,5 +23,10 @@ const posts = async () => {
     </div>
   );
 };
+export async function generateStaticParams() {
+  const data = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const posts: PostType[] = await data.json();
+  return posts.map((p: PostType) => ({ postId: p.id.toString() }));
+}
 
 export default posts;
