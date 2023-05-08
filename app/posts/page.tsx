@@ -26,7 +26,8 @@ const posts = async () => {
 export async function generateStaticParams() {
   const data = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts: PostType[] = await data.json();
-  return posts.map((p: PostType) => ({ postId: p.id.toString() }));
+  const postSplice = posts.splice(0, 10);
+  return postSplice.map((p: PostType) => ({ postId: p.id.toString() }));
 }
 
 export default posts;
