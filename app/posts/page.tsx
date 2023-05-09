@@ -8,7 +8,7 @@ const fetchPost = async () => {
 const posts = async () => {
   const posts: [PostType] = await fetchPost();
   return (
-    <div className="w-full ">
+    <div className="  p-4">
       {posts.map((p: PostType) => (
         <Link key={p.id} href={`/posts/${p.id}`} as={`posts/${p.id}`}>
           <div className="w-full max-w-md p-3 hover:bg-sage-700  mt-2 bg-yellow mx-auto">

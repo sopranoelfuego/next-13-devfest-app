@@ -25,7 +25,7 @@ const page = async ({ params: { postId } }: postParamsType) => {
   const comments: [CommentType] = await getComments(postId);
   if (!post.id) return notFound();
   return (
-    <div className="w-full max-w-lg mx-auto">
+    <div className=" max-w-lg  ">
       {/* post here */}
       <Link href="/posts" as="/posts">
         <button className="px-4 py-2 mt-3 bg-yellow">return</button>
