@@ -1,32 +1,41 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+
+// TYPES Definitions
 type postParamsType = {
   params: {
     postId: string;
   };
 };
 
+// ===== Fetching post's comments
 const getComments = async (id: string) => {
-  const data = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${parseInt(id, 10)}/comments`,
-    { cache: "no-cache" }
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${parseInt(id, 10)}/comments`
   );
-  return data.json();
+  if (!response.ok) return undefined;
+  const data = await response.json();
+  return data;
 };
+
+// ===== Fetching  Post
 const getPost = async (id: string) => {
-  const data = await fetch(
+  const response = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${parseInt(id, 10)}`,
     { next: { revalidate: 60 } }
   );
-  return data.json();
+  if (!response.ok) return undefined;
+  const data = await response.json();
+  return data;
 };
 const page = async ({ params: { postId } }: postParamsType) => {
   const post: PostType = await getPost(postId);
-  const comments: [CommentType] = await getComments(postId);
-  if (!post.id) return notFound();
+  const comments: Array<CommentType> = await getComments(postId);
+  if (!comments) return notFound();
+  if (!post) return notFound();
   return (
-    <div className=" max-w-lg ">
+    <div className=" max-w-lg  ">
       {/* post here */}
       <Link href="/posts" as="/posts">
         <button className="px-4 py-2 mt-3 bg-yellow">return</button>

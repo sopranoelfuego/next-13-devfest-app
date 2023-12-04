@@ -9,7 +9,7 @@ const page = () => {
           <Link href="/posts">view posts</Link>
         </button>
         <button className="p-2 m-2 bg-sage-700">
-          <Link href="/posts">create post</Link>
+          <Link href="/todos">view todos</Link>
         </button>
       </div>
     </div>
