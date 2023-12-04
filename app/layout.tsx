@@ -3,8 +3,8 @@ import React from "react";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 export const metadata = {
-  title: "Aubin Next blog",
-  description: "Simple blog with the latest features of react 18 and nextjs 13",
+  title: "Next 13,#devfest presentation",
+  description: "Simple  next13 app  illustrates the keys features",
 };
 export default function RootLayout({
   children,
@@ -13,11 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen ">
+      <body className="h-screen flex flex-col ">
         <Header />
-        <div className="flex w-full gap-2 justify-center items-start  ">
+        <div className="flex w-full gap-2 justify-center items-start flex-1 ">
           <SideBar />
-          {children}
+          <div className="flex-1 h-full">{children}</div>
         </div>
       </body>
     </html>

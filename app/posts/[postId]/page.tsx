@@ -9,7 +9,8 @@ type postParamsType = {
 
 const getComments = async (id: string) => {
   const data = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${parseInt(id, 10)}/comments`
+    `https://jsonplaceholder.typicode.com/posts/${parseInt(id, 10)}/comments`,
+    { cache: "no-cache" }
   );
   return data.json();
 };
@@ -25,7 +26,7 @@ const page = async ({ params: { postId } }: postParamsType) => {
   const comments: [CommentType] = await getComments(postId);
   if (!post.id) return notFound();
   return (
-    <div className=" max-w-lg  ">
+    <div className=" max-w-lg ">
       {/* post here */}
       <Link href="/posts" as="/posts">
         <button className="px-4 py-2 mt-3 bg-yellow">return</button>

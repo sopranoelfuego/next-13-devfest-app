@@ -2,14 +2,19 @@ import Link from "next/link";
 import React from "react";
 
 const fetchPost = async () => {
-  const posts = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const posts = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    cache: "no-cache",
+  });
   return posts.json();
 };
 const posts = async () => {
   const posts: [PostType] = await fetchPost();
   return (
-    <div className="  p-4">
-      {posts.map((p: PostType) => (
+    <div className="p-4">
+      <button className="p-2 m-2 bg-sage-700">
+        <Link href="/">Home</Link>
+      </button>
+      {posts.slice(0, 10).map((p: PostType) => (
         <Link key={p.id} href={`/posts/${p.id}`} as={`posts/${p.id}`}>
           <div className="w-full max-w-md p-3 hover:bg-sage-700  mt-2 bg-yellow mx-auto">
             <p className="font-bold pb-3">
