@@ -1,5 +1,4 @@
 type PostType = {
-  userId: number;
   id: 1;
   title: string;
   body: string;

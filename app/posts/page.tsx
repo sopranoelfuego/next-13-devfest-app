@@ -2,9 +2,12 @@ import Link from "next/link";
 import React from "react";
 
 const fetchPost = async () => {
-  const posts = await fetch("https://jsonplaceholder.typicode.com/posts", {
-    cache: "no-cache",
-  });
+  const posts = await fetch(
+    "https://656f2b6d6529ec1c62377a9a.mockapi.io/api/post",
+    {
+      cache: "no-cache",
+    }
+  );
   return posts.json();
 };
 const posts = async () => {

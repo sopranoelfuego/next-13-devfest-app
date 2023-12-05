@@ -22,7 +22,7 @@ const getComments = async (id: string) => {
 // ===== Fetching  Post
 const getPost = async (id: string) => {
   const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${parseInt(id, 10)}`,
+    `https://656f2b6d6529ec1c62377a9a.mockapi.io/api/post/${parseInt(id, 10)}`,
     { next: { revalidate: 60 } }
   );
   if (!response.ok) return undefined;
