@@ -1,5 +1,6 @@
 // "use client";
 // import { useEffect, useState } from "react";
+// import createTodo from "../actions/createTodo";
 import CreateTodo from "./createTodo";
 import Link from "next/link";
 type TodoType = {
@@ -75,19 +76,8 @@ const TodoPage = async () => {
           Home
         </Link>
 
-        {/* <CreateTodo /> */}
-        <form action={handleSubmit} className="w-full flex flex-col gap-2">
-          <input
-            // ref={title}
-            type="text"
-            name="title"
-            placeholder="title:homework"
-            className="w-full border rounded p-3"
-          />
-          <button className="w-full bg-blue-400 hover:bg-blue-500 transition-all duration-[400ms] rounded text-white text-base">
-            submit
-          </button>
-        </form>
+        <CreateTodo />
+
         {/* list of todo here */}
         <h2>List of TOdos </h2>
         <ul className="opacity-70">
